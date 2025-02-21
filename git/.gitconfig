@@ -1,0 +1,7 @@
+[user]
+	name = MikeHill89
+	email = MikeHill89@no-reply.com
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
