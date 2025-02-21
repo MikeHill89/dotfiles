@@ -15,7 +15,11 @@ sudo apt install -y \
     firefox \
     git \
     build-essential \
-    curl
+    curl \
+    cmake \
+    gettext \
+    lua5.1 \
+    liblua5.1.0-dev
 
 # Clone the dotfiles repository (if not already cloned)
 if [ ! -d "$HOME/dotfiles" ]; then
@@ -26,19 +30,26 @@ fi
 # Stow dotfiles
 cd ~/dotfiles
 echo "Applying dotfiles with stow..."
-stow alacritty
-stow i3
-stow picom
-stow tmux
+stow bash
 stow git
+
+# Stow config files (correct paths for hidden .config)
+echo "Linking configuration files to ~/.config..."
+stow -d ~/dotfiles/config alacritty -t ~/.config
+stow -d ~/dotfiles/config i3 -t ~/.config
+stow -d ~/dotfiles/config picom -t ~/.config
+stow -d ~/dotfiles/config neovim -t ~/.config
+
+# Tmux configuration is directly in home directory (no .config)
+echo "Linking tmux configuration to home directory..."
+stow -d ~/dotfiles tmux -t $HOME
+
 sleep 10
+
 # Additional setup (optional)
 echo "Running additional setup..."
 git clone -b v0.10.1 https://github.com/neovim/neovim.git $HOME/personal/neovim
-sudo apt install cmake gettext lua5.1 liblua5.1.0-dev
-
 cd $HOME/personal/neovim
-
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 
