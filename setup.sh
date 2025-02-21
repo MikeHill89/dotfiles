@@ -9,7 +9,7 @@ echo "Installing software..."
 sudo apt install -y \
     alacritty \
     stow \
-    i3wm \
+    i3 \
     picom \
     tmux \
     firefox \
@@ -27,11 +27,11 @@ fi
 cd ~/dotfiles
 echo "Applying dotfiles with stow..."
 stow alacritty
-stow i3wm
+stow i3
 stow picom
 stow tmux
 stow git
-
+sleep 10
 # Additional setup (optional)
 echo "Running additional setup..."
 git clone -b v0.10.1 https://github.com/neovim/neovim.git $HOME/personal/neovim
