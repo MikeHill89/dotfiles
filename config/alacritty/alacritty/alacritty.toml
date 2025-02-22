@@ -1,2 +1,2 @@
-[clipboard]
-provider = "x11"
+#[clipboard]
+#provider = "x11"

@@ -38,7 +38,7 @@ echo "Linking configuration files to ~/.config..."
 stow -d ~/dotfiles/config alacritty -t ~/.config
 stow -d ~/dotfiles/config i3 -t ~/.config
 stow -d ~/dotfiles/config picom -t ~/.config
-stow -d ~/dotfiles/config neovim -t ~/.config
+stow -d ~/dotfiles/config nvim -t ~/.config
 
 # Tmux configuration is directly in home directory (no .config)
 echo "Linking tmux configuration to home directory..."
